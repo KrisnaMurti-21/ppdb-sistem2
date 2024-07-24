@@ -1,0 +1,407 @@
+body {
+  height: 100%;
+  font-family: "Poppins";
+  background: linear-gradient(to right, #ffecd2, #fcb69f);
+}
+
+/* Untuk Fonts */
+.koh-santepheap-thin {
+  font-family: "Koh Santepheap", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.koh-santepheap-light {
+  font-family: "Koh Santepheap", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.koh-santepheap-regular {
+  font-family: "Koh Santepheap", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.koh-santepheap-bold {
+  font-family: "Koh Santepheap", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.koh-santepheap-black {
+  font-family: "Koh Santepheap", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.noto-sans-bold {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700; /* 700 for bold weight */
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.noto-sans-regular {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+/* End Fonts  */
+
+.background-image-login {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image-login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, white 25%, transparent 25%),
+    url("/assets/rushd-library-1024x777 1.png"); /* Ganti dengan URL gambar Anda */
+  background-size: cover;
+  background-position: right center;
+  z-index: -1; /* Letakkan di belakang konten */
+}
+
+.background-image-login::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Overlay warna putih dengan transparansi */
+  z-index: -1; /* Letakkan di belakang konten */
+}
+
+.background-image-register {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image-register::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/assets/rushd-school-landscape-1024x717\ 1.png"); /* Ganti dengan URL gambar Anda */
+  background-size: cover;
+  background-position: right center;
+  z-index: -1; /* Letakkan di belakang konten */
+}
+
+.background-image-register::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Overlay warna putih dengan transparansi */
+  z-index: -1; /* Letakkan di belakang konten */
+}
+
+.background-image-path {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image-path::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/assets/aa\ 1.png"); /* Ganti dengan URL gambar Anda */
+  background-size: cover;
+  background-position: right center;
+  z-index: -1; /* Letakkan di belakang konten */
+}
+
+.background-image-path::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    255,
+    119,
+    51,
+    0.65
+  ); /* Overlay warna putih dengan transparansi */
+  z-index: -1; /* Letakkan di belakang konten */
+}
+
+.form-container-orange {
+  background-color: #ff7733;
+}
+
+.form-text-14 {
+  font-size: 14px;
+}
+
+.logo-sekolah {
+  width: 98px;
+}
+
+.text-shadow {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card-image-size {
+  width: 100%;
+  height: 12.5rem;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.card-paragraph {
+  height: 6.25rem;
+}
+
+.text-orange {
+  color: #ff7733;
+}
+
+.bg-orange {
+  background-color: #ff7733;
+}
+
+.btn-orange {
+  background-color: #ff7733;
+}
+
+.btn-orange:hover {
+  background-color: #e7662d;
+}
+
+.border-orange {
+  border-color: #ff7733;
+}
+
+.border-orange:focus {
+  border-color: #ff7733;
+  box-shadow: 0 0 0 0.2rem rgba(255, 119, 51, 0.25);
+}
+
+/* bar progres style */
+.step {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.step .circle {
+  width: 40px;
+  height: 40px;
+  background: #f1f1f1;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 40px;
+  vertical-align: middle;
+  color: #333; /* Warna teks default */
+}
+
+.step .line {
+  height: 4px;
+  background: #f1f1f1;
+  display: inline-block;
+  width: 60px;
+  vertical-align: middle;
+}
+
+.step .circle.active {
+  background: #ff7733;
+  color: white;
+}
+
+.step .line.active {
+  background: #ff7733;
+}
+
+.teks-berhasil {
+  color: #170f49;
+}
+
+.confirmation-card {
+  animation: popUp 0.5s ease-out forwards;
+}
+@keyframes popUp {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .logo-sekolah {
+    width: 60px;
+  }
+
+  .card-image-size {
+    width: 100%;
+    height: 8rem;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .card-paragraph {
+    height: 3rem;
+  }
+
+  .card-body p {
+    font-size: 12px;
+  }
+
+  .background-image-path {
+    min-height: auto;
+    height: auto;
+  }
+
+  .step .circle {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .step .line {
+    width: 40px;
+  }
+}
