@@ -1,4 +1,7 @@
 <x-main-layout>
+    <x-slot:title>
+        Register
+    </x-slot:title>
     <div class="background-image-register">
         <div class="container-fluid pt-4 d-md-block d-flex justify-content-center">
             <img class="logo-sekolah" src="/assets/cropped-Logo-SMA-Unggulan-RUSHD-05-1 1.png" alt="" />
@@ -21,6 +24,11 @@
                                     Name</label>
                                 <input type="text" class="form-control" id="name" placeholder="Enter name"
                                     name="name" value="{{ old('name') }}" required autofocus />
+                                <small class="text-danger my-1 fw-light error-text">
+                                    @foreach ($errors->get('name') as $error)
+                                        {{ $error }}
+                                    @endforeach
+                                </small>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label poppins-light text-white form-text-14">Email
@@ -28,6 +36,11 @@
                                 <input type="email" class="form-control" id="email" name="email"
                                     value="{{ old('email') }}" aria-describedby="emailHelp"
                                     placeholder="Enter email" />
+                                <small class="text-danger my-1 fw-light error-text">
+                                    @foreach ($errors->get('email') as $error)
+                                        {{ $error }}
+                                    @endforeach
+                                </small>
                             </div>
                             <div class="mb-3 row g-3">
                                 <div class="col-sm-6">
@@ -40,6 +53,7 @@
                                             <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
                                         </button>
                                     </div>
+
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="password_confirmation"
@@ -54,6 +68,11 @@
                                         </button>
                                     </div>
                                 </div>
+                                <small class="text-danger my-1 fw-light error-text">
+                                    @foreach ($errors->get('password') as $error)
+                                        {{ $error }}
+                                    @endforeach
+                                </small>
                             </div>
                             <button type="submit" class="btn btn-primary w-100 poppins-semibold">
                                 Sign Up

@@ -1,4 +1,5 @@
 <x-main-layout>
+    <x-slot:title>Login</x-slot:title>
     <div class="background-image-login">
         <div class="container-fluid pt-4 d-md-block d-flex justify-content-center">
             <img class="logo-sekolah" src="/assets/cropped-Logo-SMA-Unggulan-RUSHD-05-1 1.png" alt="" />
@@ -21,7 +22,7 @@
                                     address</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                     value="{{ old('email') }}" aria-describedby="emailHelp" placeholder="Enter email"
-                                    required autofocus/>
+                                    required autofocus />
                             </div>
                             <div class="mb-3">
                                 <label for="password"
@@ -33,15 +34,24 @@
                                         <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
                                     </button>
                                 </div>
+                                @if ($errors->any()))
+                                    <small class="text-danger my-1 fw-light error-text">
+                                        @foreach ($errors->all() as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </small>
+                                @endif
                             </div>
                             <button type="submit" class="btn btn-primary w-100 poppins-semibold">
                                 Login
                             </button>
                         </form>
                         <div class="d-flex justify-content-end mt-2">
-                            <a href=""
-                                class="text-white poppins-extralight form-text-14 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Forgot
-                                Password</a>
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}"
+                                    class="text-white poppins-extralight form-text-14 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Forgot
+                                    Password</a>
+                            @endif
                         </div>
                         <div class="d-flex justify-content-center mt-3">
                             <p class="poppins-light">
