@@ -11,7 +11,7 @@ use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/coba', [PendaftaranController::class, 'index'])->name('coba');
