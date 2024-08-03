@@ -8,12 +8,18 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public function index()
+    {
+        if (auth()->check()) {
+            $data = auth()->user()->pendaftaran->first();
+            if ($data === null || $data->jalur_pendaftaran === null) {
+                return redirect()->route('pendaftaran.index');
+            }
+        }
+        return view('home');
+    }
     public function dashboard()
     {
-        $data = auth()->user()->pendaftaran->first();
-        if ($data === null || $data->jalur_pendaftaran === null) {
-            return redirect()->route('pendaftaran.index');
-        }
         $combinedData = DB::table('users')
             ->join('pendaftarans', 'users.id', '=', 'pendaftarans.user_id')
             ->leftJoin('transfers', 'pendaftarans.id', '=', 'transfers.id_pendaftaran')

@@ -71,7 +71,9 @@
                                     </div>
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Aksi</span>
+                                    <div class="flex items-center">
+                                        Bukti Transfer
+                                    </div>
                                 </th>
                             </tr>
                         </thead>
