@@ -14,6 +14,10 @@ class BiodataController extends Controller
     public function index()
     {
         $data = auth()->user()->pendaftaran->first();
+        $bio = Biodata::where('id_pendaftaran', $data->id)->first();
+        if ($bio) {
+            return redirect()->route('transfer.index');
+        }
         return view('user.biodata', compact('data'));
     }
 
