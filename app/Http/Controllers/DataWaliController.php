@@ -15,6 +15,12 @@ class DataWaliController extends Controller
      */
     public function index()
     {
+        $data = auth()->user()->pendaftaran->first();
+        $biodata = Biodata::where('id_pendaftaran', $data->id)->first();
+        $bioWali = ParentBioAyah::where('id_bio', $biodata->id)->exists();
+        if ($bioWali) {
+            return redirect()->route('transfer.index');
+        }
         return view('user.datawali');
     }
 

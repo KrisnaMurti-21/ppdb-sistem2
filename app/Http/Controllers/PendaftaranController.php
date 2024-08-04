@@ -13,6 +13,10 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
+        $data = auth()->user()->pendaftaran->first();
+        if ($data) {
+            return redirect()->route('biodata.index');
+        }
         return view('user.pendaftaran');
     }
 

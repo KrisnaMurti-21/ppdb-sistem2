@@ -59,7 +59,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end custom-dropdown-user"
                                 aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#profile">Akun</a>
+                                <a class="dropdown-item" href="{{ route('biodata.show', Auth::user()->id) }}">Akun</a>
                                 <a class="dropdown-item" href="#pembayaran">pembayaran</a>
                                 <form class="form-inline d-block" action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -87,7 +87,9 @@
                         Daftarkan diri Anda sekarang dan mulailah perjalanan menuju
                         kesuksesan!
                     </p>
-                    <a href="#" class="btn btn-orange text-white btn-lg">Daftar Sekarang</a>
+                    @guest
+                        <a href="{{ route('login') }}" class="btn btn-orange text-white btn-lg">Daftar Sekarang</a>
+                    @endguest
                 </div>
             </div>
             <div class="carousel-item custom-carousel-item" style="background-image: url('img/education.jpg')">
@@ -98,7 +100,9 @@
                         unggul melalui pendekatan pembelajaran inovatif dan fasilitas
                         modern.
                     </p>
-                    <a href="#" class="btn btn-orange text-white btn-lg">Daftar Sekarang</a>
+                    @guest
+                        <a href="{{ route('login') }}" class="btn btn-orange text-white btn-lg">Daftar Sekarang</a>
+                    @endguest
                 </div>
             </div>
             <div class="carousel-item custom-carousel-item" style="background-image: url('img/students.jpg')">
@@ -108,7 +112,9 @@
                         Menggunakan kurikulum Nasional yang dipadukan dengan kurikulum
                         Cambridge untuk bidang studi Bahasa Inggris, Sains dan Matematika.
                     </p>
-                    <a href="#" class="btn btn-orange text-white btn-lg">Daftar Sekarang</a>
+                    @guest
+                        <a href="{{ route('login') }}" class="btn btn-orange text-white btn-lg">Daftar Sekarang</a>
+                    @endguest
                 </div>
             </div>
         </div>

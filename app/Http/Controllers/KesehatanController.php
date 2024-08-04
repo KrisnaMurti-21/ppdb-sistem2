@@ -12,6 +12,11 @@ class KesehatanController extends Controller
      */
     public function index()
     {
+        $data = auth()->user()->pendaftaran->first();
+        $cekKesehatan = Kesehatan::where('id_pendaftaran', $data->id)->exists();
+        if ($cekKesehatan) {
+            return redirect()->route('datawali.index');
+        }
         return view('user.kesehatan');
     }
 

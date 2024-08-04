@@ -15,6 +15,10 @@ class RapotController extends Controller
     {
         $data = auth()->user()->pendaftaran->first();
         $jalur = $data->jalur_pendaftaran;
+        $cekRapot = Rapot::where('id_pendaftaran', $data->id)->exists();
+        if ($cekRapot) {
+            return redirect()->route('kesehatan.index');
+        }
         return view('user.rapot', compact('jalur'));
     }
 

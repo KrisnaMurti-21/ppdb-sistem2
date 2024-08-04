@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pendaftaran;
+use App\Mail\SendMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -36,16 +37,32 @@ class HomeController extends Controller
                 'transfers.bukti_transfer',
                 'transfers.sumber_informasi'
             )
-            ->groupBy('users.id', 'pendaftarans.id', 'transfers.id')
+            ->groupBy(
+                'users.id',
+                'users.name',
+                'users.email',
+                'pendaftarans.id',
+                'pendaftarans.tanggal_daftar',
+                'pendaftarans.jalur_pendaftaran',
+                'transfers.id',
+                'transfers.tanggal_transfer',
+                'transfers.nomor_transfer',
+                'transfers.bukti_transfer',
+                'transfers.sumber_informasi'
+            )
             ->orderBy('users.id')
             ->orderBy('pendaftarans.id')
             ->orderBy('transfers.id')
             ->get();
+
         return view('dashboard', compact('combinedData'));
     }
 
+
     public function success()
     {
+        $email = auth()->user()->email;
+        Mail::to($email)->send(new SendMail());
         return view('user.success');
     }
 }

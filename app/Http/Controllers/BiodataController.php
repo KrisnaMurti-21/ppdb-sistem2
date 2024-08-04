@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Biodata;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
 class BiodataController extends Controller
@@ -63,7 +64,14 @@ class BiodataController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Pendaftaran::where('user_id', $id)->first();
+        $biodata = Biodata::where('id_pendaftaran', $data->id)->first();
+        if ($data == null) {
+            return redirect()->route('pendaftaran.index');
+        } elseif ($biodata == null) {
+            return redirect()->route('biodata.index');
+        }
+        return view('user.profile', compact('biodata'));
     }
 
     /**

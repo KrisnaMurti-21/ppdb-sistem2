@@ -9,6 +9,7 @@
                     ajaran 2025/2026. Mohon tunggu informasi lebih lanjut untuk jadwal
                     tes dan interview.
                 </p>
+                <a href="{{ route('home') }}"><button class="btn btn-primary">Kembali ke Home</button></a>
             </div>
         </div>
     </div>
