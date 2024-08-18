@@ -34,7 +34,7 @@
                                         <i class="fa fa-eye-slash text-dark" aria-hidden="true"></i>
                                     </button>
                                 </div>
-                                @if ($errors->any()))
+                                @if ($errors->any())
                                     <small class="text-danger my-1 fw-light error-text">
                                         @foreach ($errors->all() as $error)
                                             {{ $error }}

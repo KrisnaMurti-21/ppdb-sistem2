@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('nomor_transfer');
             $table->string('bukti_transfer');
             $table->string('sumber_informasi');
+            $table->enum('status', ['pending', 'approve', 'reject'])->default('pending');
+            $table->boolean('is_sent')->default(false);
+            $table->boolean('accepts_whatsapp')->default(false);
             $table->timestamps();
         });
     }

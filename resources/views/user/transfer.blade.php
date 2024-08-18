@@ -55,6 +55,14 @@
                     </select>
                 </div>
 
+                <div class="form-check">
+                    <input class="form-check-input border-orange" type="checkbox" value="true" name="accepts_whatsapp"
+                        id="flexCheckDefault" required>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Saya setuju untuk menerima pesan melalui whatsapp dari SMA Unggulan RUSHD
+                    </label>
+                </div>
+
                 <div class="d-grid">
                     <button type="submit" class="btn btn-orange text-white mt-3">
                         Kirim

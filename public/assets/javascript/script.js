@@ -28,8 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const isYes = selectElement.value === "Ya";
             detailSection.classList.toggle("visually-hidden", !isYes);
             detailInput.required = isYes;
+
             if (!isYes) {
                 detailInput.value = "";
+                detailInput.disabled = true; // Disable input when not required
+            } else {
+                detailInput.disabled = false; // Enable input when required
             }
         }
 

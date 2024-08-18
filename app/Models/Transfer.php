@@ -15,6 +15,9 @@ class Transfer extends Model
         'nomor_transfer',
         'bukti_transfer',
         'sumber_informasi',
+        'status',
+        'is_sent',
+        'accepts_whatsapp',
     ];
 
     public function pendaftaran()
