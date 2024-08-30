@@ -75,19 +75,19 @@ class TransferController extends Controller
         $token  = env("WHATSAPP_TOKEN_TWILIO");
         $twilio = new Client($sid, $token);
 
-        // try {
-        //     $twilio->messages
-        //         ->create(
-        //             "whatsapp:$formatPhoneNumber", // to
-        //             array(
-        //                 "from" => "whatsapp:+14155238886",
-        //                 "body" => "Pendaftaran anda telah dilakukan. Terima kasih."
-        //             )
-        //         );
-        //     $model->update(['is_sent' => true]);
-        // } catch (\Throwable $th) {
-        //     return back()->with('error', 'Whatsapp gagal dikirim');
-        // }
+        try {
+            $twilio->messages
+                ->create(
+                    "whatsapp:$formatPhoneNumber", // to
+                    array(
+                        "from" => "whatsapp:+14155238886",
+                        "body" => "Pendaftaran anda telah dilakukan. Terima kasih."
+                    )
+                );
+            $model->update(['is_sent' => true]);
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Whatsapp gagal dikirim');
+        }
 
 
         return redirect()->route('success');

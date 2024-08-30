@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendMail;
+use App\Models\Transfer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -54,8 +56,21 @@ class HomeController extends Controller
             ->orderBy('pendaftarans.id')
             ->orderBy('transfers.id')
             ->get();
-
         return view('dashboard', compact('combinedData'));
+    }
+
+    public function pengumuman()
+    {
+        $data = Auth::user()->pendaftaran;
+        $datatransfer = Transfer::where('id_pendaftaran', $data->first()->id)->first();
+        if ($datatransfer->status == 'pending') {
+            $message = 'Mohon menunggu konfirmasi dari admin';
+        } elseif ($datatransfer->status == 'reject') {
+            $message = 'Pendaftaran anda ditolak, mohon periksa kembali data anda';
+        } else {
+            $message = 'Selamat anda telah terdaftar';
+        }
+        return view('user.pengumuman', compact('message'));
     }
 
 

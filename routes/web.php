@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\DataWaliController;
 use App\Http\Controllers\HomeController;
@@ -11,6 +12,10 @@ use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumuman');
+Route::get('/detail/{id}', [AdminController::class, 'detail'])->middleware(['auth', 'verified', 'checkrole:admin'])->name('detail');
+Route::get('/approve/{id}', [AdminController::class, 'approve'])->middleware(['auth', 'verified', 'checkrole:admin'])->name('approve');
+Route::get('/reject/{id}', [AdminController::class, 'reject'])->middleware(['auth', 'verified', 'checkrole:admin'])->name('reject');
 Route::middleware(['auth', 'checkrole:user'])->group(function () {
     Route::resource('pendaftaran', PendaftaranController::class);
     Route::resource('biodata', BiodataController::class);

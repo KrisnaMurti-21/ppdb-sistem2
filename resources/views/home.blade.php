@@ -61,7 +61,8 @@
                             <div class="dropdown-menu dropdown-menu-end custom-dropdown-user"
                                 aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="{{ route('biodata.show', Auth::user()->id) }}">Akun</a>
-                                <a class="dropdown-item" href="{{ route('transfer.index') }}">pembayaran</a>
+                                <a class="dropdown-item" href="{{ route('transfer.index') }}">Pembayaran</a>
+                                <a class="dropdown-item" href="{{ route('pengumuman') }}">Pengumuman</a>
                                 <form class="form-inline d-block" action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button class="dropdown-item" type="submit">Log Out</button>

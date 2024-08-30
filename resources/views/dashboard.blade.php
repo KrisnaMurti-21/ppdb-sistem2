@@ -97,7 +97,7 @@
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         @if ($item->bukti_transfer)
-                                            <a href="/storage/images/{{ $item->bukti_transfer }}"
+                                            <a href="{{ route('detail', ['id' => $item->pendaftaran_id]) }}"
                                                 class="font-medium text-blue-600 hover:underline">Show</a>
                                         @else
                                             Belum bayar
