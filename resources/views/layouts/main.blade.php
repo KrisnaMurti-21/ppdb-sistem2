@@ -17,10 +17,10 @@
     <!-- end fonts -->
     <link rel="stylesheet" href="/assets/home/fontawesome/css/all.min.css" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 </head>
 
-<body>
+<body {{ $attributes->merge(['class' => $body ?? '']) }}>
     {{ $slot }}
     <script src="/assets/javascript/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

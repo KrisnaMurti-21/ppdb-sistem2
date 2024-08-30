@@ -66,6 +66,8 @@ class BiodataController extends Controller
             'provinsi' => $request->get('provinsi'),
             'telephone' => $request->get('telepon'),
         ];
+        $user->name = $request->get('name');
+        $user->save();
         Biodata::create($data);
         return redirect()->route('rapot.index');
     }
@@ -82,7 +84,9 @@ class BiodataController extends Controller
         $biodata = Biodata::where('id_pendaftaran', $data->id)->first();
         $rapot = Rapot::where('id_pendaftaran', $data->id)->first();
         $kesehatan = Kesehatan::where('id_pendaftaran', $data->id)->first();
-        $wali = ParentBioAyah::where('id_bio', $biodata->id)->first();
+        if ($biodata != null) {
+            $wali = ParentBioAyah::where('id_bio', $biodata->id)->first();
+        }
         $transfer = Transfer::where('id_pendaftaran', $data->id)->first();
         if ($data == null) {
             return redirect()->route('pendaftaran.index');

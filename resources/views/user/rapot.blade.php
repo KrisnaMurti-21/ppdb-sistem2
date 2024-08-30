@@ -1,21 +1,30 @@
 <x-main-layout>
-    <div class="container shadow-lg p-3 mb-5 mt-5 justify-content-center bg-white rounded">
-        <div class="mt-5">
-            <h2 class="text-center text-orange poppins-bold">
-                Form Input Nilai Pengetahuan Rapor Kelas 7 dan 8
-            </h2>
-            <div class="step mt-4">
-                <span class="circle active">1</span>
-                <span class="line active"></span>
-                <span class="circle active">2</span>
-                <span class="line"></span>
-                <span class="circle">3</span>
-                <span class="line"></span>
-                <span class="circle">4</span>
-            </div>
+    <x-slot:title>Form Rapot Calon Siswa</x-slot:title>
+    <x-slot:body>
+        form-bg
+    </x-slot:body>
+    <div class="container mt-5 mb-5 rounded">
+        <div class="title-form-me fw-bold px-5 fs-4 rounded-top py-3">
+            Nilai Pengetahuan Rapor Kelas 7 dan 8
         </div>
+        <div class="bg-white pt-3 rounded-bottom">
+            <!-- tab daftar form -->
+            <div class="row px-5">
+                <div class="col text-form-me text-center fs-6 py-3">
+                    <i class="fa-regular fa-circle-check me-2"></i>Biodata
+                </div>
+                <div class="col text-form-me text-center fs-6 py-3 border-bottom border-primary-subtle">
+                    <i class="fa-regular fa-circle-check me-2"></i>Nilai Pengetahuan
+                </div>
 
-        <div class="mt-5 mx-5">
+                <div class="col text-form-me text-center fs-6 py-3">
+                    <i class="fa-regular fa-circle me-2"></i>Kondisi Kesehatan
+                </div>
+                <div class="col text-form-me text-center fs-6 py-3">
+                    <i class="fa-regular fa-circle me-2"></i>Orangtua
+                </div>
+            </div>
+            <!-- End of Daftar Form -->
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -25,173 +34,177 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('rapot.store') }}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- Kelas 7 Semester 1 -->
-                        <div class="card mb-4">
-                            <div class="card-header bg-orange">
-                                <h5 class="card-title text-white noto-sans-regular">
+            <!-- Form Rapot -->
+            <div class="p-5">
+                <form action="{{ route('rapot.store') }}" method="POST" id="biodataForm">
+                    @csrf
+                    <div class="row row-gap-5">
+                        <div class="col-12 col-sm-6 px-lg-5">
+                            <div class="bg-white shadow-lg rounded pb-3">
+                                <div class="form-head-orange text-center fs-3 fw-semibold rounded py-3">
                                     Kelas 7 Semester 1
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="math7s1" class="form-label noto-sans-regular">Matematika</label>
-                                    <input type="number" class="form-control border-orange" id="math_7s1"
-                                        name="mtk_7s1" placeholder="Masukkan nilai" min="0" max="100" />
                                 </div>
-                                <div class="mb-3">
-                                    <label for="english7s1" class="form-label noto-sans-regular">Bahasa Inggris</label>
-                                    <input type="number" class="form-control border-orange" id="english7s1"
-                                        name="inggris_7s1" placeholder="Masukkan nilai" min="0" max="100" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="ipa7s1" class="form-label noto-sans-regular">IPA</label>
-                                    <input type="number" class="form-control border-orange" id="ipa7s1"
-                                        name="ipa_7s1" placeholder="Masukkan nilai" min="0" max="100" />
+                                <div class="mx-4 mt-3">
+                                    <div class="mb-3">
+                                        <label for="matematika_7s1" class="form-label fw-semibold">Matematika</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="matematika_7s1"
+                                            name="mtk_7s1" placeholder="Masukkan Nilai" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="b_inggris_7s1" class="form-label fw-semibold">Bahasa Inggris</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="b_inggris_7s1"
+                                            name="inggris_7s1" placeholder="Masukkan Nilai" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ipa_7s1" class="form-label fw-semibold">IPA</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="ipa_7s1"
+                                            name="ipa_7s1" placeholder="Masukkan Nilai" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <!-- Kelas 7 Semester 2 -->
-                        <div class="card mb-4">
-                            <div class="card-header bg-orange">
-                                <h5 class="card-title text-white noto-sans-regular">
+                        <div class="col-12 col-sm-6 px-lg-5">
+                            <div class="bg-white shadow-lg rounded pb-3">
+                                <div class="form-head-orange text-center fs-3 fw-semibold rounded py-3">
                                     Kelas 7 Semester 2
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="math7s2" class="form-label noto-sans-regular">Matematika</label>
-                                    <input type="number" class="form-control border-orange" id="math7s2"
-                                        name="mtk_7s2" placeholder="Masukkan nilai" min="0" max="100" />
                                 </div>
-                                <div class="mb-3">
-                                    <label for="english7s2" class="form-label noto-sans-regular">Bahasa Inggris</label>
-                                    <input type="number" class="form-control border-orange" id="english7s2"
-                                        name="inggris_7s2" placeholder="Masukkan nilai" min="0" max="100" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="ipa7s2" class="form-label noto-sans-regular">IPA</label>
-                                    <input type="number" class="form-control border-orange" id="ipa7s2"
-                                        name="ipa_7s2" placeholder="Masukkan nilai" min="0" max="100" />
+                                <div class="mx-4 mt-3">
+                                    <div class="mb-3">
+                                        <label for="matematika_7s2" class="form-label fw-semibold">Matematika</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="matematika_7s2"
+                                            name="mtk_7s2" placeholder="Masukkan Nilai" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="b_inggris_7s2" class="form-label fw-semibold">Bahasa Inggris</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="b_inggris_7s2"
+                                            name="inggris_7s2" placeholder="Masukkan Nilai" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ipa_7s2" class="form-label fw-semibold">IPA</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="ipa_7s2"
+                                            name="ipa_7s2" placeholder="Masukkan Nilai" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- Kelas 8 Semester 1 -->
-                        <div class="card mb-4">
-                            <div class="card-header bg-orange">
-                                <h5 class="card-title text-white noto-sans-regular">
+                        <div class="col-12 col-sm-6 px-lg-5">
+                            <div class="bg-white shadow-lg rounded pb-3">
+                                <div class="form-head-orange text-center fs-3 fw-semibold rounded py-3">
                                     Kelas 8 Semester 1
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="math8s1" class="form-label noto-sans-regular">Matematika</label>
-                                    <input type="number" class="form-control border-orange" id="math8s1"
-                                        name="mtk_8s1" placeholder="Masukkan nilai" min="0" max="100" />
                                 </div>
-                                <div class="mb-3">
-                                    <label for="english8s1" class="form-label noto-sans-regular">Bahasa
-                                        Inggris</label>
-                                    <input type="number" class="form-control border-orange" id="english8s1"
-                                        name="inggris_8s1" placeholder="Masukkan nilai" min="0"
-                                        max="100" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="ipa8s1" class="form-label noto-sans-regular">IPA</label>
-                                    <input type="number" class="form-control border-orange" id="ipa8s1"
-                                        name="ipa_8s1" placeholder="Masukkan nilai" min="0" max="100" />
+                                <div class="mx-4 mt-3">
+                                    <div class="mb-3">
+                                        <label for="matematika_8s1" class="form-label fw-semibold">Matematika</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="matematika_8s1"
+                                            name="mtk_8s1" placeholder="Masukkan Nilai" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="b_inggris_8s1" class="form-label fw-semibold">Bahasa Inggris</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="b_inggris_8s1"
+                                            name="inggris_8s1" placeholder="Masukkan Nilai" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ipa_8s1" class="form-label fw-semibold">IPA</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="ipa_8s1"
+                                            name="ipa_8s1" placeholder="Masukkan Nilai" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <!-- Kelas 8 Semester 2 -->
-                        <div class="card mb-4">
-                            <div class="card-header bg-orange">
-                                <h5 class="card-title text-white noto-sans-regular">
+                        <div class="col-12 col-sm-6 px-lg-5">
+                            <div class="bg-white shadow-lg rounded pb-3">
+                                <div class="form-head-orange text-center fs-3 fw-semibold rounded py-3">
                                     Kelas 8 Semester 2
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="math8s2" class="form-label noto-sans-regular">Matematika</label>
-                                    <input type="number" class="form-control border-orange" id="math8s2"
-                                        name="mtk_8s2" placeholder="Masukkan nilai" min="0" max="100" />
                                 </div>
-                                <div class="mb-3">
-                                    <label for="english8s2" class="form-label noto-sans-regular">Bahasa
-                                        Inggris</label>
-                                    <input type="number" class="form-control border-orange" id="english8s2"
-                                        name="inggris_8s2" placeholder="Masukkan nilai" min="0"
-                                        max="100" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="ipa8s2" class="form-label noto-sans-regular">IPA</label>
-                                    <input type="number" class="form-control border-orange" id="ipa8s2"
-                                        name="ipa_8s2" placeholder="Masukkan nilai" min="0" max="100" />
+                                <div class="mx-4 mt-3">
+                                    <div class="mb-3">
+                                        <label for="matematika_8s2" class="form-label fw-semibold">Matematika</label>
+                                        <input type="number" class="form-control input-tanpa-arrow"
+                                            id="matematika_8s2" name="mtk_8s2" placeholder="Masukkan Nilai" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="b_inggris_8s2" class="form-label fw-semibold">Bahasa
+                                            Inggris</label>
+                                        <input type="number" class="form-control input-tanpa-arrow"
+                                            id="b_inggris_8s2" name="inggris_8s2" placeholder="Masukkan Nilai" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ipa_8s2" class="form-label fw-semibold">IPA</label>
+                                        <input type="number" class="form-control input-tanpa-arrow" id="ipa_8s2"
+                                            name="ipa_8s2" placeholder="Masukkan Nilai" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                @if ($jalur == 'prestasi')
-                    <h2 class="text-center text-orange poppins-bold">
-                        Form Input Prestasi
-                    </h2>
+                    <!-- Prestasi -->
+                    @if ($jalur == 'prestasi')
+                        <div class="row">
+                            <div class="col px-lg-5 pt-5">
+                                <div class="bg-white shadow-lg rounded pb-3">
+                                    <div class="form-head-orange text-center fs-3 fw-semibold rounded py-3">
+                                        Prestasi
+                                    </div>
+                                    <div class="mx-4 mt-3" id="prestasi-container">
+                                        <div class="prestasi-item">
+                                            <div class="mb-3">
+                                                <label for="tingkat" class="form-label fw-semibold">Tingkat</label>
+                                                <input type="text" class="form-control input-tanpa-arrow"
+                                                    name="prestasis[0][tingkat]" placeholder="Masukkan Tingkat" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="juara" class="form-label fw-semibold">Juara</label>
+                                                <input type="text" class="form-control input-tanpa-arrow"
+                                                    name="prestasis[0][juara]" placeholder="Masukkan Juara" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="bidang" class="form-label fw-semibold">Bidang</label>
+                                                <input type="text" class="form-control input-tanpa-arrow"
+                                                    name="prestasis[0][bidang]" placeholder="Masukkan Bidang" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="penyelenggara"
+                                                    class="form-label fw-semibold">Penyelenggara</label>
+                                                <input type="text" class="form-control input-tanpa-arrow"
+                                                    name="prestasis[0][penyelenggara]"
+                                                    placeholder="Masukkan Penyelenggara" />
+                                            </div>
+                                            <button type="button" class="btn btn-danger remove-prestasi">
+                                                Hapus Prestasi
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="ms-4">
 
-                    <div id="prestasi-container">
-                        <div class="prestasi-item">
-                            <div class="mb-3">
-                                <label for="tingkat" class="noto-sans-regular">Tingkat</label>
-                                <input type="text" class="form-control border-orange" name="prestasis[0][tingkat]"
-                                    placeholder="Masukkan tingkat kejuaran" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="juara" class="noto-sans-regular">Juara</label>
-                                <input type="text" class="form-control border-orange" name="prestasis[0][juara]"
-                                    placeholder="Masukkan peringkat juara" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="bidang" class="noto-sans-regular">Bidang</label>
-                                <input type="text" class="form-control border-orange" name="prestasis[0][bidang]"
-                                    placeholder="Masukkan Bidang Lomba" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="penyelenggara" class="noto-sans-regular">Penyelenggara</label>
-                                <input type="text" class="form-control border-orange"
-                                    name="prestasis[0][penyelenggara]" placeholder="Masukkan Nama Penyelenggara" />
+                                        <button type="button" id="add-prestasi" class="btn btn-primary mt-3">
+                                            Tambah Prestasi <i class="fa-solid fa-arrow-left ms-2"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <button type="button" id="add-prestasi" class="btn btn-orange text-white mb-3">
-                        Tambah Prestasi
-                    </button>
-                @endif
-
-                <!-- Submit Button -->
-                <div class="d-grid mb-5">
-                    <button type="submit" class="btn btn-orange text-white mt-3">
-                        Selanjutnya
+                    @endif
+                    <!-- End of Prestasi -->
+                </form>
+            </div>
+            <!-- End of Form Rapot -->
+            <hr />
+            <div class="row px-5 py-3">
+                <div class="col-12 col-sm-6">
+                    <p class="text-body-tertiary">
+                        Pastikan data yang diisikan sudah benar!
+                    </p>
+                </div>
+                <div class="col-12 col-sm-6 d-flex justify-content-sm-end justify-content-between gap-3">
+                    <button type="button" class="btn button-cancel-form">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitButton">
+                        Continue<i class="fa-solid fa-arrow-left ms-2"></i>
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-    <div class="mt-5"><br /></div>
 
     <script>
         let prestasiCount = 1;
@@ -202,29 +215,31 @@
             newPrestasiItem.classList.add('prestasi-item');
 
             newPrestasiItem.innerHTML = `
-                <hr />
-                <div class="mb-3">
-                    <label for="tingkat" class="noto-sans-regular">Tingkat</label>
-                    <input type="text" class="form-control border-orange" name="prestasis[${prestasiCount}][tingkat]"
-                        placeholder="Masukkan tingkat kejuaraan" />
-                </div>
-                <div class="mb-3">
-                    <label for="juara" class="noto-sans-regular">Juara</label>
-                    <input type="text" class="form-control border-orange" name="prestasis[${prestasiCount}][juara]"
-                        placeholder="Masukkan peringkat juara" />
-                </div>
-                <div class="mb-3">
-                    <label for="bidang" class="noto-sans-regular">Bidang</label>
-                    <input type="text" class="form-control border-orange" name="prestasis[${prestasiCount}][bidang]"
-                        placeholder="Masukkan Bidang Lomba" />
-                </div>
-                <div class="mb-3">
-                    <label for="penyelenggara" class="noto-sans-regular">Penyelenggara</label>
-                    <input type="text" class="form-control border-orange" name="prestasis[${prestasiCount}][penyelenggara]"
-                        placeholder="Masukkan Nama Penyelenggara" />
-                </div>
-                <button type="button" class="btn btn-danger remove-prestasi">Hapus Prestasi</button>
-            `;
+        <hr />
+        <div class="mb-3">
+            <label for="tingkat" class="form-label fw-semibold">Tingkat</label>
+            <input type="text" class="form-control input-tanpa-arrow" name="prestasis[${prestasiCount}][tingkat]"
+                placeholder="Masukkan Tingkat" />
+        </div>
+        <div class="mb-3">
+            <label for="juara" class="form-label fw-semibold">Juara</label>
+            <input type="text" class="form-control input-tanpa-arrow" name="prestasis[${prestasiCount}][juara]"
+                placeholder="Masukkan Juara" />
+        </div>
+        <div class="mb-3">
+            <label for="bidang" class="form-label fw-semibold">Bidang</label>
+            <input type="text" class="form-control input-tanpa-arrow" name="prestasis[${prestasiCount}][bidang]"
+                placeholder="Masukkan Bidang" />
+        </div>
+        <div class="mb-3">
+            <label for="penyelenggara" class="form-label fw-semibold">Penyelenggara</label>
+            <input type="text" class="form-control input-tanpa-arrow" name="prestasis[${prestasiCount}][penyelenggara]"
+                placeholder="Masukkan Penyelenggara" />
+        </div>
+        <button type="button" class="btn btn-danger remove-prestasi">
+            Hapus Prestasi
+        </button>
+    `;
 
             prestasiContainer.appendChild(newPrestasiItem);
             prestasiCount++;
@@ -239,6 +254,10 @@
                     alert("Setidaknya satu kolom prestasi harus ada.");
                 }
             }
+        });
+
+        document.getElementById('submitButton').addEventListener('click', function() {
+            document.getElementById('biodataForm').submit();
         });
     </script>
 </x-main-layout>

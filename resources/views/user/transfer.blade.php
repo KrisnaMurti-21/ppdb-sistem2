@@ -1,74 +1,159 @@
 <x-main-layout>
-    <div class="container justify-content-center d-flex">
-        <div class="col-lg-7 shadow-lg p-3 mb-5 mt-5 bg-white rounded py-4 px-4">
-            <div class="bg-orange rounded-top text-center py-2">
-                <h3 class="text-white poppins-medium">Pendaftaran PPDB</h3>
-                <h1 class="text-white poppins-semibold">SMA Unggulan Rushd</h1>
+    <x-slot:title>Form Submit Bukti Pembayaran</x-slot:title>
+    <x-slot:body>
+        form-bg
+    </x-slot:body>
+    <div class="container mt-5 mb-5 rounded">
+        <div class="title-form-me fw-bold px-5 fs-4 rounded-top py-3">
+            Bukti Transfer
+        </div>
+        <div class="bg-white pt-3 rounded-bottom">
+            <!-- Form Biodata -->
+            <div class="p-5">
+                <form action="{{ route('transfer.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <section class="mb-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="preview-zone visually-hidden">
+                                            <div class="box box-solid">
+                                                <div class="box-header with-border">
+                                                    <div><b>Preview</b></div>
+                                                    <div class="box-tools pull-right">
+                                                        <button type="button"
+                                                            class="btn btn-danger btn-xs remove-preview visually-hidden">
+                                                            <i class="fa fa-times"></i> Ganti Gambar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="box-body"></div>
+                                            </div>
+                                        </div>
+                                        <div class="dropzone-wrapper">
+                                            <div class="dropzone-desc">
+                                                <i class="fa-solid fa-cloud-arrow-up fs-1 fw-bold text-form-me"></i>
+                                                <p>Drop File Here</p>
+                                                <p>Support file PNG, JPG, JPEG</p>
+                                                <p>OR</p>
+                                                <p class="text-form-me">Browse files</p>
+                                            </div>
+                                            <input type="file" class="dropzone" id="buktiTransfer"
+                                                name="bukti_transfer" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="form-group mb-3 px-3">
+                        <label for="sumberInformasi" class="form-label noto-sans-regular">
+                            Informasi SMA Unggulan didapatkan dari:
+                        </label>
+                        <select class="form-select border-orange" id="sumberInformasi" name="sumber_informasi" required>
+                            <option selected disabled>Pilih sumber</option>
+                            <option value="Keluarga">Keluarga</option>
+                            <option value="Rekan">Rekan</option>
+                            <option value="Media Sosial">Media Sosial</option>
+                            <option value="Website">Website</option>
+                            <option value="Iklan">Iklan</option>
+                            <option value="Brosur">Brosur</option>
+                        </select>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input border-orange" type="checkbox" value="true"
+                            name="accepts_whatsapp" id="flexCheckDefault" required>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Saya setuju untuk menerima pesan melalui whatsapp dari SMA Unggulan RUSHD
+                        </label>
+                    </div>
+                    <div class="row px-5 py-3">
+                        <div class="col-12 col-sm-6">
+                            <p class="text-body-tertiary">
+                                Pastikan data yang diisikan sudah benar!
+                            </p>
+                        </div>
+                        <div class="col-12 col-sm-6 d-flex justify-content-sm-end justify-content-between gap-3">
+                            <button type="button" class="btn button-cancel-form">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                Continue<i class="fa-solid fa-arrow-left ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="mt-4">
-                <p class="poppins-regular">
-                    Untuk mendukung kelancaran proses administrasi pembayaran biaya
-                    pendidikan di SMA Unggulan Rushd, berikut kami informasikan nomor
-                    rekening Bank BRI yang dapat digunakan untuk melakukan pembayaran:
-                </p>
-                <strong class="poppins-bold">Bank BRI</strong>
-                <p class="poppins-regular">
-                    Nomor Rekening: 014001002717308<br />
-                    Atas Nama: SMA Unggulan Rushd <br />
-                    Biaya Registrasi: Rp.500.000,-
-                </p>
-                <h5 class="poppins-regular">Instruksi Pembayaran:</h5>
-                <ol class="poppins-regular">
-                    <li>
-                        Silakan melakukan transfer sesuai dengan jumlah yang telah
-                        ditentukan melalui ATM, Mobile Banking, atau Internet Banking ke
-                        nomor rekening di atas.
-                    </li>
-                    <li>
-                        Setelah melakukan transfer, harap segera mengunggah bukti transfer
-                        sebagai konfirmasi pembayaran.
-                    </li>
-                </ol>
-            </div>
-            <form action="{{ route('transfer.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group mb-3">
-                    <label for="buktiTransfer" class="form-label noto-sans-regular">
-                        Upload Bukti Transfer:
-                    </label>
-                    <input type="file" class="form-control border-orange" id="buktiTransfer" name="bukti_transfer"
-                        required />
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="sumberInformasi" class="form-label noto-sans-regular">
-                        Informasi SMA Unggulan didapatkan dari:
-                    </label>
-                    <select class="form-select border-orange" id="sumberInformasi" name="sumber_informasi" required>
-                        <option selected disabled>Pilih sumber</option>
-                        <option value="Keluarga">Keluarga</option>
-                        <option value="Rekan">Rekan</option>
-                        <option value="Media Sosial">Media Sosial</option>
-                        <option value="Website">Website</option>
-                        <option value="Iklan">Iklan</option>
-                        <option value="Brosur">Brosur</option>
-                    </select>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input border-orange" type="checkbox" value="true" name="accepts_whatsapp"
-                        id="flexCheckDefault" required>
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Saya setuju untuk menerima pesan melalui whatsapp dari SMA Unggulan RUSHD
-                    </label>
-                </div>
-
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-orange text-white mt-3">
-                        Kirim
-                    </button>
-                </div>
-            </form>
+            <!-- End of Form Biodata -->
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script>
+        function readFile(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    var htmlPreview =
+                        '<img width="200" src="' +
+                        e.target.result +
+                        '" />' +
+                        "<p>" +
+                        input.files[0].name +
+                        "</p>";
+
+                    var wrapperZone = $(input).closest(".form-group");
+                    var previewZone = wrapperZone.find(".preview-zone");
+                    var boxZone = previewZone.find(".box-body");
+                    var removeBtn = wrapperZone.find(".remove-preview");
+                    var dropzoneWrapper = wrapperZone.find(".dropzone-wrapper");
+
+                    // Menampilkan preview dan menyembunyikan dropzone
+                    wrapperZone.find(".dropzone-wrapper").addClass("visually-hidden");
+                    previewZone.removeClass("visually-hidden");
+                    boxZone.empty().append(htmlPreview);
+                    removeBtn.removeClass("visually-hidden");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function reset(input) {
+            input.wrap("<form>").closest("form").get(0).reset();
+            input.unwrap();
+        }
+
+        $(".dropzone").change(function() {
+            readFile(this);
+        });
+
+        $(".dropzone-wrapper").on("dragover", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).addClass("dragover");
+        });
+
+        $(".dropzone-wrapper").on("dragleave", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).removeClass("dragover");
+        });
+
+        $(".remove-preview").on("click", function() {
+            var boxZone = $(this).closest(".form-group").find(".box-body");
+            var previewZone = $(this).closest(".form-group").find(".preview-zone");
+            var dropzoneWrapper = $(this)
+                .closest(".form-group")
+                .find(".dropzone-wrapper");
+            var dropzone = $(this).closest(".form-group").find(".dropzone");
+
+            // Mengosongkan preview, menyembunyikan zona preview, dan menampilkan dropzone kembali
+            boxZone.empty();
+            previewZone.addClass("visually-hidden");
+            dropzoneWrapper.removeClass("visually-hidden");
+            reset(dropzone);
+            $(this).addClass("visually-hidden");
+        });
+    </script>
 </x-main-layout>
