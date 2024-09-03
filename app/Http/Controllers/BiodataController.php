@@ -110,7 +110,8 @@ class BiodataController extends Controller
     public function edit(string $id)
     {
         $data = Biodata::find($id);
-        if ($data->id_pendaftaran != auth()->id()) {
+        $dataPendaftaran = Pendaftaran::where('id', $data->id_pendaftaran)->first();
+        if ($dataPendaftaran->user_id != auth()->id()) {
             abort(403, 'Unauthorized action.');
         }
         return view('biodata.edit', compact('data'));
@@ -139,7 +140,8 @@ class BiodataController extends Controller
         $dataUser = Auth::user();
         $dataUser->name = $request->get('nama_lengkap');
         $dataUser->save();
-        return redirect()->route('biodata.show', $biodata->id_pendaftaran);
+        $dataPendaftaran = Pendaftaran::where('id', $biodata->id_pendaftaran)->first();
+        return redirect()->route('biodata.show', $dataPendaftaran->user_id);
     }
 
     /**

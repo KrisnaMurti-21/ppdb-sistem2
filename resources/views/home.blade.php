@@ -32,10 +32,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#timeline">Timeline</a>
+                        <a class="nav-link" href="{{ route('home') }}#timeline">Timeline</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -44,21 +44,21 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="#prestasi">Seleksi Prestasi</a>
+                                <a class="dropdown-item" href="{{ route('home') }}#prestasi">Seleksi Prestasi</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#reguler">Seleksi Reguler</a>
+                                <a class="dropdown-item" href="{{ route('home') }}#reguler">Seleksi Reguler</a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#achievement">Program Unggulan</a>
+                        <a class="nav-link" href="{{ route('home') }}#achievement">Program Unggulan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#blog">Prestasi</a>
+                        <a class="nav-link" href="{{ route('home') }}#blog">Prestasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#faq">FAQ</a>
+                        <a class="nav-link" href="{{ route('home') }}#faq">FAQ</a>
                     </li>
                     @guest
                         <li class="nav-item ms-5">
@@ -73,7 +73,6 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="{{ route('biodata.show', Auth::user()->id) }}">Akun</a>
-                                <a class="dropdown-item" href="{{ route('transfer.index') }}">Pembayaran</a>
                                 <a class="dropdown-item" href="{{ route('pengumuman') }}">Pengumuman</a>
                                 <form class="form-inline d-block" action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -398,7 +397,7 @@
             </div>
             <div class="row justify-content-center mt-5">
                 <div class="col text-center">
-                    <a href="program.html" class="btn btn-learn-more">See More</a>
+                    <a href="{{ route('programunggulan') }}" class="btn btn-learn-more">See More</a>
                 </div>
             </div>
         </div>
@@ -427,7 +426,7 @@
                                     to inspire us all!
                                 </p>
                             </div>
-                            <img src="{{ asset('img/prestasi/satu.jpg') }}" class="card-img-top h-auto"
+                            <img src="{{ asset('img/prestasi/Satu.jpg') }}" class="card-img-top h-auto"
                                 alt="Fissure in Sandstone" style="max-width: 150px;">
                         </div>
                     </a>

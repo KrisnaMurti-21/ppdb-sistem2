@@ -9,7 +9,6 @@
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
-
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -104,7 +103,7 @@
                         </div>
 
                         <div class="justify-content-end d-flex">
-                            <button type="submit" class="btn btn-orange text-white mt-3">
+                            <button type="submit" class="btn btn-primary text-white mt-3">
                                 Simpan
                             </button>
                         </div>

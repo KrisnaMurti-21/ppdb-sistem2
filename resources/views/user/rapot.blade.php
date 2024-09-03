@@ -255,7 +255,8 @@
                 }
             }
         });
-
+    </script>
+    <script>
         document.getElementById('submitButton').addEventListener('click', function() {
             document.getElementById('biodataForm').submit();
         });

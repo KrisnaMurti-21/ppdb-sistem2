@@ -1,4 +1,7 @@
 <x-main-layout>
+    <x-slot:body>
+        form-bg
+    </x-slot:body>
     <section>
         <div class="container py-5">
             <div class="row">

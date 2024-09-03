@@ -12,7 +12,8 @@ use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumuman');
+Route::get('/programunggulan', [HomeController::class, 'programunggulan'])->name('programunggulan');
+Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->middleware(['auth', 'verified'])->name('pengumuman');
 Route::get('/detail/{id}', [AdminController::class, 'detail'])->middleware(['auth', 'verified', 'checkrole:admin'])->name('detail');
 Route::get('/approve/{id}', [AdminController::class, 'approve'])->middleware(['auth', 'verified', 'checkrole:admin'])->name('approve');
 Route::get('/reject/{id}', [AdminController::class, 'reject'])->middleware(['auth', 'verified', 'checkrole:admin'])->name('reject');

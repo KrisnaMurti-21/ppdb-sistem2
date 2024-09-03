@@ -63,21 +63,29 @@ class HomeController extends Controller
     {
         $data = Auth::user()->pendaftaran;
         $datatransfer = Transfer::where('id_pendaftaran', $data->first()->id)->first();
-        if ($datatransfer->status == 'pending') {
-            $message = 'Mohon menunggu konfirmasi dari admin';
-        } elseif ($datatransfer->status == 'reject') {
-            $message = 'Pendaftaran anda ditolak, mohon periksa kembali data anda';
-        } else {
-            $message = 'Selamat anda telah terdaftar';
-        }
-        return view('user.pengumuman', compact('message'));
-    }
+        if ($datatransfer != null) {
+            $idDataTf = $datatransfer->id;
 
+            if ($datatransfer->status == 'pending') {
+                return view('user.pending');
+            } elseif ($datatransfer->status == 'reject') {
+                return view('user.reject', compact('idDataTf'));
+            } else {
+                return view('user.approve');
+            }
+        }
+        return view('user.transfer');
+    }
 
     public function success()
     {
         $email = auth()->user()->email;
-        Mail::to($email)->send(new SendMail());
+        // Mail::to($email)->send(new SendMail());
         return view('user.success');
+    }
+
+    public function programunggulan()
+    {
+        return view('user.programunggulan');
     }
 }

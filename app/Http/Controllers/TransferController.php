@@ -5,23 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Biodata;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Twilio\Rest\Client;
 
 class TransferController extends Controller
 {
-    function formatPhoneNumber($phoneNumber)
-    {
-        // Menghapus karakter non-digit
-        $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
-
-        // Memeriksa apakah nomor dimulai dengan 0 dan menggantinya dengan +62
-        if (substr($phoneNumber, 0, 1) == '0') {
-            $phoneNumber = '+62' . substr($phoneNumber, 1);
-        }
-
-        return $phoneNumber;
-    }
     /**
      * Display a listing of the resource.
      */
@@ -67,28 +56,7 @@ class TransferController extends Controller
             'accepts_whatsapp' => $request->input('accepts_whatsapp') ? true : false,
         ];
         $biodata = Biodata::where('id_pendaftaran', $pendaftaran->id)->first();
-        $formatPhoneNumber = $this->formatPhoneNumber($biodata->telephone);
-        $model = Transfer::create($transfer);
-
-        //KIRIM WHATSAPP
-        $sid    = env("WHATSAPP_ID_TWILIO");
-        $token  = env("WHATSAPP_TOKEN_TWILIO");
-        $twilio = new Client($sid, $token);
-
-        try {
-            $twilio->messages
-                ->create(
-                    "whatsapp:$formatPhoneNumber", // to
-                    array(
-                        "from" => "whatsapp:+14155238886",
-                        "body" => "Pendaftaran anda telah dilakukan. Terima kasih."
-                    )
-                );
-            $model->update(['is_sent' => true]);
-        } catch (\Throwable $th) {
-            return back()->with('error', 'Whatsapp gagal dikirim');
-        }
-
+        Transfer::create($transfer);
 
         return redirect()->route('success');
     }
@@ -104,17 +72,49 @@ class TransferController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Transfer $transfer)
     {
-        //
+        return view('transfer.edit', compact('transfer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'bukti_transfer' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048',
+            'sumber_informasi' => 'required|string|max:255',
+        ]);
+
+        $pendaftaran = auth()->user()->pendaftaran->first();
+        $transfer = Transfer::findOrFail($id);
+
+        // Mengunggah dan memperbarui bukti transfer jika ada file baru
+        if ($request->hasFile('bukti_transfer')) {
+            $file = $request->file('bukti_transfer');
+            $imageName = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('images', $imageName, 'public');
+
+            // Hapus bukti transfer lama jika ada
+            if ($transfer->bukti_transfer) {
+                Storage::disk('public')->delete('images/' . $transfer->bukti_transfer);
+            }
+
+            // Perbarui nama file bukti transfer
+            $transfer->bukti_transfer = $imageName;
+        }
+
+        // Perbarui data transfer lainnya
+        $transfer->sumber_informasi = $request->input('sumber_informasi');
+        $transfer->accepts_whatsapp = $request->input('accepts_whatsapp') ? true : false;
+        $transfer->status = 'pending';
+
+        // Simpan perubahan
+        $transfer->save();
+
+        // Redirect atau kembali dengan pesan sukses
+        return redirect()->route('success');
     }
 
     /**
